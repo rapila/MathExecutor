@@ -33,6 +33,13 @@ class MathTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($calculator->execute('1 / 0'), 0);
     }
 
+    public function testVariables()
+    {
+        $calculator = new MathExecutor();
+        $calculator->setVars(array('zero' => 0, 'one' => 1, 'twentyfife' => 25));
+        $this->assertEquals($calculator->execute('($twentyfife-$one * ($zero + $one))'), 24);
+    }
+
     /**
      * Expressions data provider
      */
